@@ -8,8 +8,13 @@
         </div>
     {% endfor %}   
     <br>
-{% for post in posts %}
-    {% if current_user.id == post.poster.id or current_user.username == "admin"  %}
+    
+    <!-- {% if posts.all()|length == 0 %} -->
+    <h4>You have not published any blog posts. =)</h4>
+    <!-- {% endif %} -->
+    
+    {% for post in posts %}
+    {% if current_user.id == post.poster.id  %}
     <div class="shadow p-3 mb-5 bg-body rounded">
         <h4>{{ post.title }}</h4>
         <small>By: {{ post.poster.name }}<br>
