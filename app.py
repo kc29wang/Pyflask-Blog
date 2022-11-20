@@ -1,8 +1,5 @@
 from flask import Flask, flash, redirect, session, render_template, request, url_for
-from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import or_
 from datetime import datetime
 from flask_migrate import Migrate
