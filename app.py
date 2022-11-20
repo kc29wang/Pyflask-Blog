@@ -135,7 +135,7 @@ def edit_post(id):
         posts = Posts.query.order_by(Posts.date_posted.desc())
         return render_template("posts.html", posts=posts)
     
-    if post.poster.id == current_user.id:
+    if post.poster.id == current_user.id or current_user.username == "admin":
         form.title.data=post.title
         # form.slug.data=post.slug
         form.content.data=post.content
