@@ -351,8 +351,9 @@ def dashboard():
         # Set UUID
         pic_name = str(uuid.uuid1()) + "_" + pic_filename
         # Save image
+        MYDIR = os.path.dirname(__file__)
         saver = request.files['profile_pic']
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+        saver.save(os.path.join(MYDIR + "/" + app.config['UPLOAD_FOLDER'], pic_name))
         # Change it to a string to save to db
         user.profile_pic = pic_name
         db.session.commit()

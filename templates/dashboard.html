@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-6">
                             <h5>Welcome to your dashboard!</h5>
                             <Strong>Name: </Strong>{{ current_user.name }}<br>
                             <Strong>Username: </Strong>{{ current_user.username }}<br>
@@ -30,7 +30,7 @@
                             <a class="btn btn-sm btn-dark theme button" href="{{ url_for('change_pw', id=current_user.id)}}">Change Password</a>
                             <a href="{{url_for('delete', id=current_user.id)}}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
                             {% if current_user.profile_pic %}
                                 <img src="{{ url_for ('static', filename=current_user.profile_pic)}}" alt="Profile Picture" width="180" height="180" class="rounded float-end">
                             {% else%}
