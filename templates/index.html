@@ -25,10 +25,12 @@
     {% endif %}
 </div>
 {% endfor %}
-
+{% if not current_user.is_authenticated  %}
 <div class="container">
     Enjoying our content? <a class="theme_text" href="/user/add"><span class="theme_text">Register</span></a> here or <a class="theme_text" href="/login"><span class="theme_text">Login</span></a>.
 </div>
+{% endif %}
+<br>
 <br>
 <br>
 {% endblock %}
