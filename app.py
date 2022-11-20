@@ -170,7 +170,7 @@ def add_post():
 @login_required
 def posts():
     # Grab all the posts from db    
-    posts = Posts.query.order_by(Posts.date_posted.desc())
+    posts = Posts.query.filter_by(poster_id=current_user.id)
     return render_template("posts.html", posts=posts)
 
 

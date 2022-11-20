@@ -6,7 +6,7 @@
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    {% endfor %}    
+    {% endfor %}  <br>  
         <h2>Login</h2>
         <br>
         <form method="POST">
@@ -21,6 +21,8 @@
             <br>
             {{ form.submit(class="btn btn-dark theme")}}
             </div>
+            Don't have an account? <a class="theme_text" href="/add_user"><span class="theme_text">Register</span></a> here.
+
         </form>
         <br>
 {% endblock %}
