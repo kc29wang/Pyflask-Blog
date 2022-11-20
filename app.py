@@ -233,6 +233,10 @@ def add_user():
             flash("Email not available!")
             our_users=Users.query.order_by(Users.date_added)    
             return render_template("add_user.html", name=name, form=form, our_users=our_users)
+        else:
+            our_users=Users.query.order_by(Users.date_added)    
+            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+
         name=form.name.data
         form.name.data=''
         form.username.data=''
