@@ -66,8 +66,8 @@ a.search_result
 
  .circle
  {
-    border-radius: 50% !important;
-    border: 2px solid #22354f !important;
+    border-radius: 50%;
+    border: 2px solid #22354f;
     align-items: center;
     align-self: center;
 
@@ -75,17 +75,17 @@ a.search_result
 
  .squared
  {
-    border-radius: 5% !important;
-    border: 2px solid #22354f !important;
+    border-radius: 5%;
+    border: 2px solid #22354f;
     align-items: center;
     align-self: center;
 
  }
 
  .col-1 {
-    width: 0% !important;
+    width: 0%;
 }
  
  .col-11 {
-    padding-left: 65px !important;
+    padding-left: 65px;
 }
