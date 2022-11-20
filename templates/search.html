@@ -9,17 +9,31 @@
             <h5>Search Results</h5><br>
 
             {% for result in results|reverse  %}
-            <div class="shadow p-3 mb-5 bg-body rounded">
-                <h4 class="theme_text">{{ result.Posts.title }}</h4>
-                <small>By: {{ result.Users.name }}<br>
-                Date: {{ result.Posts.date_posted }}</small><br>
-                <div class="preview">{{ result.Posts.content|safe }}</div>                
-                <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=result.Posts.id) }}">View Post</a>        
-                {% if current_user.id == result.Posts.poster_id or current_user.username == "admin"  %}
-                <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=result.Posts.id) }}">Edit Post</a>  
-                <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=result.Posts.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete Post</a>
-                {% endif %}
-            </div>
+            <div class="shadow p-3 mb-5 bg-body rounded">       
+                <div class="row">
+                    <div class="col-1">
+    
+                    {% if post.poster.profile_pic %}
+                        <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                        <!-- <img src="{{ url_for ('static', filename=post.poster.profile_pic)}}" alt="Profile Picture" width="60" height="60" class="float-start circle"> -->
+                    {% else%}
+                        <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                    {% endif %}
+                    </div>
+                    
+                    <div class="col-11">
+                        <h4 class="theme_text">{{ result.Posts.title }}</h4>
+                        <small>By: <a class="theme_text" href="{{ url_for ('user', id=result.poster.id) }}"><span class="theme_text">{{ result.User.name }}</span></a><br>
+                        Date: {{ result.Posts.date_posted }}</small><br>
+                        <div class="preview">{{ result.Posts.content|safe }}</div>
+                        <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=result.Posts.id) }}">View Post</a>        
+                        {% if current_user.id == post.poster.id or current_user.username == "admin"  %}
+                        <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=result.Posts.id) }}">Edit Post</a>  
+                        <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=result.Posts.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete Post</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div> 
             {% endfor %}
             {% else %}
                 <h6>Sorry, your search term "{{ searched }}" was not found.</h6>

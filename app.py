@@ -387,9 +387,9 @@ def search():
     form = SearchForm() 
     posts = db.session.query(Users, Posts)
     if form.validate_on_submit():
-        searched = form.searched.data
+        searched = func.lower(form.searched.data)
         # Query the database
-        results = posts.filter(or_(Posts.content.like('%' + searched + '%'), Posts.title.like('%' + searched + '%'), Users.name.like('%' + searched + '%'))).join(Users, Posts.poster_id==Users.id)
+        results = posts.filter(or_(func.lower(Posts.content).like('%' + searched + '%'), func.lower(Posts.title).like('%' + searched + '%'), func.lower(Users.name).like('%' + searched + '%'))).join(Users, Posts.poster_id==Users.id)
         # results = results.order_by(Posts.title).all()
     return render_template ('search.html', form=form, searched=searched, results=results)
 

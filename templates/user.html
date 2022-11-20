@@ -45,7 +45,8 @@
                 <div class="col-1">
 
                 {% if post.poster.profile_pic %}
-                    <img src="{{ url_for ('static', filename=post.poster.profile_pic)}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                    <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                    <!-- <img src="{{ url_for ('static', filename=post.poster.profile_pic)}}" alt="Profile Picture" width="60" height="60" class="float-start circle"> -->
                 {% else%}
                     <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
                 {% endif %}
