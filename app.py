@@ -201,8 +201,9 @@ def index():
 # localhost:5000/user/John
 @app.route("/user/<int:id>")
 def user(id):
-    user=Users.query.get(id)
-    return render_template("user.html", user=user)
+    user = Users.query.get(id)
+    posts = Posts.query.filter_by(poster_id=id)
+    return render_template("user.html", user=user, posts=posts)
 
 # Creat custom error pages
 # Invalid URL
