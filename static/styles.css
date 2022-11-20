@@ -22,11 +22,9 @@ a.button
     color: white;
 }
 
-a.button-dash
+a.dash
 {
-    text-decoration: none;
-    color: white;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 a:hover
