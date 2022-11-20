@@ -25,7 +25,11 @@ app.config["SECRET_KEY"] = "PIEFLASK"
 # Add Database (SQLite3)
 #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 # Add Database (MySQL)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://omlxzbxwelkcyt:2a00127f35f7fe95ddd20376ac4fb26dd969aded7bddf2668365c74e8bdd5167@ec2-3-220-207-90.compute-1.amazonaws.com:5432/d9n2pqqr1o08hd"
+# Railway databse
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:ISJWGbASWPhybOKlb99o@containers-us-west-139.railway.app:7146/railway"
+# Heroku database:
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://omlxzbxwelkcyt:2a00127f35f7fe95ddd20376ac4fb26dd969aded7bddf2668365c74e8bdd5167@ec2-3-220-207-90.compute-1.amazonaws.com:5432/d9n2pqqr1o08hd"
+# Local Database
 #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:12345@127.0.0.1/our_users"
 app.config['UPLOAD_FOLDER'] = 'static/'
 # Ensure templates are auto-reloaded
