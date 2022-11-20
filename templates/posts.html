@@ -11,9 +11,7 @@
     
     {% if posts.all()|length == 0 %}
         <h4>You have not published any blog posts...</h4><br>
-        <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('add_post') }}">Create a New Post</a><br><br>
-        <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('index') }}">Browse Blogs Feeds</a>
-
+        <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('add_post') }}">Create a New Post</a><br>
     {% else %}
         {% for post in posts %}
         {% if current_user.id == post.poster.id  %}
