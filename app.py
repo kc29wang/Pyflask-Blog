@@ -221,11 +221,10 @@ def add_user():
         user = Users.query.filter_by(username = form.username.data).first()
         user_email = Users.query.filter_by(email = form.email.data).first()
         if user is None and user_email is None:
-            user = Users(username=form.username.data, name=form.name.data, email=form.email.data, favorite_color=form.favorite_color.data, password_hash=generate_password_hash(form.password.data))
+            user = Users(username=form.username.data, name=form.name.data, email=form.email.data, password_hash=generate_password_hash(form.password.data))
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            name=form.name.data
             form.name.data=''
             form.username.data=''
             form.email.data=''
@@ -235,12 +234,10 @@ def add_user():
             return render_template("Dashboard.html",form=form)
         elif not user is None:
             flash("Username not available!")
-            our_users=Users.query.order_by(Users.date_added)    
-            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+            return render_template("add_user.html", form=form)
         elif not user_email is None:
             flash("Email not available!")
-            our_users=Users.query.order_by(Users.date_added)    
-            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+            return render_template("add_user.html", form=form)
 
     if current_user.is_authenticated:
         return render_template("Dashboard.html",form=form)
