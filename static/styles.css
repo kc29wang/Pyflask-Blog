@@ -63,3 +63,30 @@ a.search_result
     white-space: nowrap;
     vertical-align: middle;
  }
+
+ .circle
+ {
+    border-radius: 50%;
+    border: 2px solid #22354f;
+    align-items: center;
+    align-self: center;
+
+ }
+
+ .squared
+ {
+    border-radius: 5%;
+    border: 2px solid #22354f;
+    align-items: center;
+    align-self: center;
+
+ }
+
+ .col-1 {
+    width: 0%;
+
+}
+ 
+ .col-11 {
+    padding-left: 65px;
+}
