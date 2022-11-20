@@ -14,11 +14,13 @@
             <div class="card-header">
                 <h3>Hi {{ current_user.name }},</h3>
             </div>
+            <div class="card-title">
+                <h5>Welcome to your dashboard!</h5>
+            </div>
             <div class="card-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
-                            <h5>Welcome to your dashboard!</h5>
                             <Strong>Name: </Strong>{{ current_user.name }}<br>
                             <Strong>Username: </Strong>{{ current_user.username }}<br>
                             <Strong>User Id: </Strong>{{ current_user.id }}<br>
