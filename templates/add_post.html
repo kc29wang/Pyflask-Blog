@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}    
+
+    <br>
+    {% if current_user.is_authenticated %}
+    <h2>New Blog Post:</h2>
+    <br>
+    <form method="POST">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+        {{ form.hidden_tag() }}
+        {{ form.title.label(class="form-label theme_title") }}
+        {{ form.title(class="form-control") }}
+        <br>
+        {{ form.hidden_tag() }}
+        {{ form.content.label(class="form-label theme_title") }}
+        {{ form.content(class="form-control", rows="10") }}
+        <br>
+        {{ form.submit(class="btn btn-dark theme")}}
+        </div>
+    </form>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content') }}
+    {% else %}
+    <h3>Must be logged in!</h3>
+    <p>Sorry, you need to be logged in to add posts!</p>
+    <br>
+    <a class="btn btn-dark theme button" href="{{ url_for('login') }}">Login Here</a>
+    {% endif %}
+{% endblock %}

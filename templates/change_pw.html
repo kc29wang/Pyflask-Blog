@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}    
+    {% if id == current_user.id %}
+    <br>
+    <h2>Change Password</h2>
+    <br>
+    <form action="/change_pw/{{ current_user.id }}"method="POST">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <input class="form-control" type="password" placeholder="Old Password" name="old_pw">
+            <br>
+            <input class="form-control" type="password" placeholder="New Password" name="new_pw">
+            <br>
+            <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_pw">
+            <br>
+            <input class="btn btn-dark theme" type="submit" value="submit">
+        </div>
+    </form>
+    {% else %}
+    <br>
+    <h1 class="theme_text">Access Denied!</h1>
+    <br>
+    <h3 class="theme_text">Sorry, you cannot change this user's password.</h2>
+    {% endif %}
+    <br>
+{% endblock %}

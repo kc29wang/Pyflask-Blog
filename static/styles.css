@@ -1,0 +1,59 @@
+
+.theme
+{
+    background-color: #22354f;
+}
+
+
+.theme_title
+{
+    color: #22354f;
+    font-weight: bold;
+}
+
+.theme_text , h1, h2, h3, h4, h5 ,h6
+{
+    color: #22354f;
+}
+
+a.button
+{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover
+{
+    color: white;
+}
+
+a.user
+{
+    text-decoration: none;
+    color: blue;
+}
+
+body
+{
+    background-color: #f0eede;
+}
+
+a.search_result
+{
+    color: #22354f;
+}
+
+.center-cropped {
+
+    overflow: hidden;
+  }
+
+.preview{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+ }

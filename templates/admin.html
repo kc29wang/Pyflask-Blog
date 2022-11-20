@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+<h2>Admin Area</h2>
+
+<br>
+<table class="table table-striped">
+    {% for our_user in our_users %}  
+    <tr>
+        <td >
+            {{ our_user.id }}. <a class="user" href="{{url_for('update', id=our_user.id)}}">{{ our_user.name }}</a> - {{ our_user.username }} - {{ our_user.email }} - {{ our_user.favorite_color}} - PW: {{ our_user.password_hash}} <a class="user" href="{{url_for('delete', id=our_user.id)}}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
