@@ -43,11 +43,10 @@
         <div class="shadow p-3 mb-5 bg-body rounded">       
             <div class="row">
                 <div class="col-1">
-
                 {% if post.poster.profile_pic %}
-                    <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                 {% else%}
-                    <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle">
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                 {% endif %}
                 </div>
                 
