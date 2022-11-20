@@ -35,7 +35,7 @@
             <li class="nav-item me-auto">
               <a class="nav-link active" aria-current="page" href="{{ url_for('posts') }}">My Posts</a>
             </li>
-            {% if current_user.id == 25 %}
+            {% if current_user.username == "admin" %}
             <li class="nav-item me-auto">
               <a class="nav-link active" aria-current="page" href="{{ url_for('admin') }}">Admin</a>
             </li>

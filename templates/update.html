@@ -7,7 +7,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}    
-    {% if current_user.id == name_to_update.id or current_user.id == 25  %}
+    {% if current_user.id == name_to_update.id or current_user.username == "admin"  %}
     <br>
     <h2>Edit User Profile</h2>
     <br>

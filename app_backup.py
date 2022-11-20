@@ -1,16 +1,16 @@
-from flask import Flask, flash, redirect, session, render_template, request, url_for
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField, ValidationError
-from wtforms.validators import DataRequired, EqualTo, Length
-from flask_session import Session
-from flask_sqlalchemy import SQLAlchemy
-from os import path
-from datetime import datetime
-from flask_migrate import Migrate
-from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import date
-from wtforms.widgets import TextArea
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+# from flask import Flask, flash, redirect, session, render_template, request, url_for
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, SubmitField, PasswordField, BooleanField, ValidationError
+# from wtforms.validators import DataRequired, EqualTo, Length
+# from flask_session import Session
+# from flask_sqlalchemy import SQLAlchemy
+# from os import path
+# from datetime import datetime
+# from flask_migrate import Migrate
+# from werkzeug.security import generate_password_hash, check_password_hash
+# from datetime import date
+# from wtforms.widgets import TextArea
+# from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 
 # Configure application
 app = Flask(__name__)

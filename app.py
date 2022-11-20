@@ -25,8 +25,8 @@ app.config["SECRET_KEY"] = "PIEFLASK"
 # Add Database (SQLite3)
 #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 # Add Database (MySQL)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://omlxzbxwelkcyt:2a00127f35f7fe95ddd20376ac4fb26dd969aded7bddf2668365c74e8bdd5167@ec2-3-220-207-90.compute-1.amazonaws.com:5432/d9n2pqqr1o08hd"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:12345@127.0.0.1/our_users"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://omlxzbxwelkcyt:2a00127f35f7fe95ddd20376ac4fb26dd969aded7bddf2668365c74e8bdd5167@ec2-3-220-207-90.compute-1.amazonaws.com:5432/d9n2pqqr1o08hd"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:12345@127.0.0.1/our_users"
 app.config['UPLOAD_FOLDER'] = 'static/'
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -96,7 +96,7 @@ def post(id):
 def delete_post(id):
     post_to_delete = Posts.query.get_or_404(id)        
     try:
-        if current_user.id == post_to_delete.poster.id or current_user.id == 25:
+        if current_user.id == post_to_delete.poster.id or current_user.username == "admin":
             db.session.delete(post_to_delete)
             db.session.commit()
             flash("Post Deleted Successfully!")
@@ -122,7 +122,7 @@ def edit_post(id):
     post = Posts.query.get_or_404(id)
     form = PostForm()       
     if form.validate_on_submit():
-        if current_user.id == post.poster.id or current_user.id == 25:
+        if current_user.id == post.poster.id or current_user.username == "admin":
             post.title=form.title.data
             # post.slug=form.slug.data
             post.content=form.content.data
@@ -219,13 +219,18 @@ def add_user():
     # Validate Form
     if form.validate_on_submit():
         user = Users.query.filter_by(username = form.username.data).first()
-        if user is None:
+        user_email = Users.query.filter_by(email = form.email.data).first()
+        if user is None and user_email is None:
             user = Users(username=form.username.data, name=form.name.data, email=form.email.data, favorite_color=form.favorite_color.data, password_hash=generate_password_hash(form.password.data))
             db.session.add(user)
             db.session.commit()
             login_user(user)
-        else:
+        elif not user is None:
             flash("Username not available!")
+            our_users=Users.query.order_by(Users.date_added)    
+            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+        elif not user_email is None:
+            flash("Email not available!")
             our_users=Users.query.order_by(Users.date_added)    
             return render_template("add_user.html", name=name, form=form, our_users=our_users)
         name=form.name.data
@@ -293,7 +298,7 @@ def delete(id):
     name = None
     form = UserForm()
     try:
-        if id == current_user.id or id == 25:
+        if id == current_user.id or current_user.username == "admin":
             user_to_delete = Users.query.get_or_404(id)
             db.session.delete(user_to_delete)
             db.session.commit()    
@@ -380,8 +385,7 @@ def layout():
 @app.route('/admin')
 @login_required
 def admin():
-    id = current_user.id
-    if id == 25:
+    if current_user.username == "admin":
         our_users=Users.query.order_by(Users.date_added)    
         return render_template("admin.html", our_users=our_users)
     else:
