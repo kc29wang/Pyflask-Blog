@@ -25,19 +25,17 @@
                             <Strong>Email: </Strong>{{ current_user.email }}<br>
                             <!-- <Strong>PFP: </Strong>{{ current_user.profile_pic }}<br> -->
                             <Strong>Date Joined: </Strong>{{ current_user.date_added }} UTC<br>
-                            <div style="margin:10px; padding:10px">
-                            <a style="margin:10px; padding:10px" class="btn btn-sm btn-dark theme button" href="{{ url_for('update', id=current_user.id)}}">Update Profile</a>
-                            <a style="margin:10px; padding:10px" class="btn btn-sm btn-dark theme button" href="{{ url_for('change_pw', id=current_user.id)}}">Change Password</a>
-                            <a href="{{url_for('delete', id=current_user.id)}}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                            </div>
-                            </div>
-                            <div class="col-6">
+                            <a style="margin:10px;" class="btn btn-sm btn-dark theme button" href="{{ url_for('update', id=current_user.id)}}">Update Profile</a>
+                            <a style="margin:10px;" class="btn btn-sm btn-dark theme button" href="{{ url_for('change_pw', id=current_user.id)}}">Change Password</a>
+                            <a style="margin:10px;x"href="{{url_for('delete', id=current_user.id)}}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                        </div>
+                        <div class="col-6">
                             {% if current_user.profile_pic %}
                                 <img src="{{ url_for ('static', filename=current_user.profile_pic)}}" alt="Profile Picture" width="180" height="180" class="rounded float-end">
                             {% else%}
                                 <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="180" height="180" class="rounded float-end">
                             {% endif %}
-                            </div>
+                        </div>
                 </div></div>
             </div>
         </div>
