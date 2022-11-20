@@ -1,5 +1,40 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>Hello {{ name | upper }}</h1>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    <br>
+    <h2 style="text-align: center">Dashboard</h2>
+    <br>
+        <div class="card theme_text">
+            <div class="card-header">
+                <h3>User Details: {{ user.name }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <Strong>Name: </Strong>{{ user.name }}<br>
+                            <Strong>Username: </Strong>{{ user.username }}<br>
+                            <Strong>User Id: </Strong>{{ user.id }}<br>
+                            <Strong>Email: </Strong>{{ user.email }}<br>
+                            <!-- <Strong>PFP: </Strong>{{ current_user.profile_pic }}<br> -->
+                            <Strong>Date Joined: </Strong>{{ user.date_added }} UTC<br>
+                        </div>
+                        <div class="col-6">
+                            {% if user.profile_pic %}
+                                <img src="{{ url_for ('static', filename=current_user.profile_pic)}}" alt="Profile Picture" width="170" height="170" class="rounded float-end">
+                            {% else%}
+                                <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="170" height="170" class="rounded float-end">
+                            {% endif %}
+                        </div>
+                </div></div>
+            </div>
+        </div>
+
+        <br>
 {% endblock %}
