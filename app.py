@@ -231,7 +231,7 @@ def add_user():
             form.favorite_color.data=''
             form.password.data=''
             flash("User Registered Successfully!")
-            return render_template("Dashboard.html",form=form)
+            return render_template("dashboard.html",form=form)
         elif not user is None:
             flash("Username not available!")
             return render_template("add_user.html", form=form)
