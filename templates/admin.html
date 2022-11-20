@@ -33,7 +33,8 @@
             {{ our_user.email }}
         </td>
         <td >
-            <a class="btn btn-dark theme btn-sm button"  href="{{url_for('update', id=our_user.id)}}">Edit User</a> /
+            <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('user', id=our_user.id) }}">User Details</a>
+            <a class="btn btn-dark theme btn-sm button"  href="{{ url_for('update', id=our_user.id) }}">Edit User</a> /
             <a class="btn btn-outline-danger btn-sm" href="{{url_for('delete', id=our_user.id)}}" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</a>
         </td>
     </tr>

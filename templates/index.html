@@ -25,7 +25,7 @@
                 
                 <div class="col-11">
                     <h4 class="theme_text">{{ post.title }}</h4>
-                    <small>By: <a class="theme_text" href=""><span class="theme_text">{{ post.poster.name }}</span></a><br>
+                    <small>By: <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><span class="theme_text">{{ post.poster.name }}</span></a><br>
                     Date: {{ post.date_posted }}</small><br>
                     <div class="preview">{{ post.content|safe }}</div>
                     <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=post.id) }}">View Post</a>        
