@@ -234,17 +234,14 @@ def add_user():
             our_users=Users.query.order_by(Users.date_added)    
             return render_template("add_user.html", name=name, form=form, our_users=our_users)
         else:
-            our_users=Users.query.order_by(Users.date_added)    
-            return render_template("add_user.html", name=name, form=form, our_users=our_users)
-
-        name=form.name.data
-        form.name.data=''
-        form.username.data=''
-        form.email.data=''
-        form.favorite_color.data=''
-        form.password.data=''
-        flash("User Registered Successfully!")
-        return render_template("Dashboard.html",form=form)
+            name=form.name.data
+            form.name.data=''
+            form.username.data=''
+            form.email.data=''
+            form.favorite_color.data=''
+            form.password.data=''
+            flash("User Registered Successfully!")
+            return render_template("Dashboard.html",form=form)
     if current_user.is_authenticated:
         return render_template("Dashboard.html",form=form)
     return render_template("add_user.html", form=form)
