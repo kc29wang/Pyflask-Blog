@@ -82,6 +82,10 @@ a.search_result
 
  }
 
+ .adminTable{
+    text-align: center;
+ }
+
  .col-1 {
     width: 0%;
 }

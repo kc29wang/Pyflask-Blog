@@ -100,6 +100,13 @@ def post(id):
 def delete_post(id):
     post_to_delete = Posts.query.get_or_404(id)        
     try:
+        if post_to_delete.poster == None:
+            db.session.delete(post_to_delete)
+            db.session.commit()
+            flash("Post Deleted Successfully!")
+            # Grab all posts from the db
+            posts = Posts.query.order_by(Posts.date_posted.desc())
+            return render_template("posts.html", posts=posts)
         if current_user.id == post_to_delete.poster.id or current_user.username == "admin":
             db.session.delete(post_to_delete)
             db.session.commit()
@@ -304,9 +311,14 @@ def delete(id):
     try:
         if id == current_user.id or current_user.username == "admin":
             user_to_delete = Users.query.get_or_404(id)
+            posts_to_delete = Posts.query.filter_by(poster_id=id).all()
             db.session.delete(user_to_delete)
-            db.session.commit()    
-            logout_user()            
+            for post in posts_to_delete:
+                db.session.delete(post)
+            db.session.commit()  
+            if current_user.username == "admin":
+                return redirect(url_for('admin'))
+            logout_user()
             flash("User deleted successfully!")
             return redirect(url_for('index'))
         flash("You are not authorized to delete this user!")
