@@ -34,7 +34,7 @@
         </td>
         <td >
             <a style="margin-top: 5px" class="btn btn-dark theme btn-sm button" href="{{ url_for ('user', id=our_user.id) }}">Details</a>
-            <a style="margin-top: 5px" class="btn btn-dark theme btn-sm button"  href="{{ url_for('update', id=our_user.id) }}">Edit</a>
+            <a style="margin-top: 5px" class="btn btn-dark theme btn-sm button"  href="{{ url_for('update', id=our_user.id) }}"> Edit </a>
             <a style="margin-top: 5px" class="btn btn-outline-danger btn-sm" href="{{url_for('delete', id=our_user.id)}}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
         </td>
     </tr>
