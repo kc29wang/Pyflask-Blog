@@ -225,15 +225,6 @@ def add_user():
             db.session.add(user)
             db.session.commit()
             login_user(user)
-        elif not user is None:
-            flash("Username not available!")
-            our_users=Users.query.order_by(Users.date_added)    
-            return render_template("add_user.html", name=name, form=form, our_users=our_users)
-        elif not user_email is None:
-            flash("Email not available!")
-            our_users=Users.query.order_by(Users.date_added)    
-            return render_template("add_user.html", name=name, form=form, our_users=our_users)
-        else:
             name=form.name.data
             form.name.data=''
             form.username.data=''
@@ -242,6 +233,15 @@ def add_user():
             form.password.data=''
             flash("User Registered Successfully!")
             return render_template("Dashboard.html",form=form)
+        elif not user is None:
+            flash("Username not available!")
+            our_users=Users.query.order_by(Users.date_added)    
+            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+        elif not user_email is None:
+            flash("Email not available!")
+            our_users=Users.query.order_by(Users.date_added)    
+            return render_template("add_user.html", name=name, form=form, our_users=our_users)
+
     if current_user.is_authenticated:
         return render_template("Dashboard.html",form=form)
     return render_template("add_user.html", form=form)
