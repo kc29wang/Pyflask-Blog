@@ -209,7 +209,7 @@ def index():
 @app.route("/user/<int:id>")
 def user(id):
     user = Users.query.get(id)
-    posts = Posts.query.filter_by(poster_id=id)
+    posts = Posts.query.filter_by(poster_id=id).order_by(Posts.date_posted.desc())
     return render_template("user.html", user=user, posts=posts)
 
 # Creat custom error pages
