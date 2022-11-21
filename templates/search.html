@@ -2,7 +2,7 @@
 
 {% block content %}
         <br>
-            <h3 class="theme_title"> Blog posts that contents "{{ searched }}"...</h3>
+            <h3 class="theme_title"> Blog posts that contains "{{ searched }}"...</h3>
             <br>
             {% if not results.all()|length == 0 %}
                 <h5>Search Results</h5><br>
