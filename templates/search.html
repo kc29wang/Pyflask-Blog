@@ -7,7 +7,7 @@
             <br>
             {% if not results.all()|length == 0 %}
                 <h5>Search Results</h5><br>
-                {% for result in results|reverse  %}
+                {% for result in results  %}
                 <div class="shadow p-3 mb-5 bg-body rounded">    
                     <table>
                         <tbody>
