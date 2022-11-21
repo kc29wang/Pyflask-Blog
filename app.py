@@ -181,7 +181,7 @@ def add_post():
 @login_required
 def posts():
     # Grab all the posts from db    
-    posts = Posts.query.filter_by(poster_id=current_user.id)
+    posts = Posts.query.filter_by(poster_id=current_user.id).order_by(Posts.date_posted.desc())
     return render_template("posts.html", posts=posts)
 
 
@@ -390,7 +390,7 @@ def search():
         searched = form.searched.data
         # Query the database
         results = posts.filter(or_(func.lower(Posts.content).like('%' + func.lower(searched) + '%'), func.lower(Posts.title).like('%' + func.lower(searched) + '%'), func.lower(Users.name).like('%' + func.lower(searched) + '%'))).join(Users, Posts.poster_id==Users.id)
-        # results = results.order_by(Posts.title).all()
+        results = results.order_by(Posts.date_posted.desc())
     return render_template ('search.html', form=form, searched=searched, results=results)
 
 # Pass stuff to Layout
