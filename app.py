@@ -91,7 +91,7 @@ class Users(db.Model, UserMixin):
 
 @app.route('/posts/<int:id>')
 def post(id):
-    post = Posts.query.get_or_404(id)
+    post = Posts.query.get_or_404(id).order_by(Posts.date_posted.desc())
     return render_template("post.html", post=post)
 
 # Delete post page

@@ -13,7 +13,7 @@
         <h4>You have not published any blog posts...</h4><br>
         <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('add_post') }}">Create a New Post</a><br>
     {% else %}
-        {% for post in posts|reverse %}
+        {% for post in posts %}
         <div class="shadow p-3 mb-5 bg-body rounded">       
             <table>
                 <tbody>
