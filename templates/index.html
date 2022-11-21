@@ -19,13 +19,13 @@
                 {% if post.poster.profile_pic %}
                     <img usemap="#workmap" src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle small">
                     <map name="workmap">
-                        <area shape="circle" coords="30,30,30" alt="Circle Area" class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"></a>
+                        <area shape="circle" coords="30,30,30" alt="Circle Area" href="{{ url_for ('user', id=post.poster.id) }}">
                     </map>
                 {% else%}
                     <img usemap="#workmap" src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle small">
                     <map name="workmap">
-                        <area shape="circle" coords="30,30,30" alt="Circle Area" class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"></a>
-                    </map>              
+                        <area shape="circle" coords="30,30,30" alt="Circle Area" href="{{ url_for ('user', id=post.poster.id) }}">   
+                    </map>
                 {% endif %}
                 </div>
                 
