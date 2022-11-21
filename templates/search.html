@@ -12,8 +12,8 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td class="leftData">{% if result.Posts.poster.profile_pic %}
-                                    <a href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                                <td class="leftData">{% if result.Posts.poster.id == 2 %}
+                                    <a href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='Bennett.jpg')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                                 {% else%}
                                     <a href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                                 {% endif %}
