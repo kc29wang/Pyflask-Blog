@@ -17,9 +17,17 @@
                 <div class="col-1">
 
                 {% if post.poster.profile_pic %}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}">
+                        <div>
+                            <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small">
+                        </div>
+                    </a>
                 {% else%}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}">
+                        <div>
+                            <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small">
+                        </div>
+                    </a>                
                 {% endif %}
                 </div>
                 
