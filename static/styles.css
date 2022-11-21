@@ -98,3 +98,8 @@ a.search_result
     width: 60px;
     height: 60px;
 }
+
+.pfp
+{
+    display: block; 
+}
