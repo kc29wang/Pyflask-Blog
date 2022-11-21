@@ -44,9 +44,9 @@
             <div class="row">
                 <div class="col-1">
                 {% if post.poster.profile_pic %}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
                 {% else%}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
                 {% endif %}
                 </div>
                 

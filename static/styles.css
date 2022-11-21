@@ -93,3 +93,8 @@ a.search_result
  .col-11 {
     padding-left: 65px;
 }
+
+.small{
+    width: 60px;
+    height: 60px;
+}
