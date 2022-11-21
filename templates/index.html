@@ -17,17 +17,15 @@
                 <div class="col-1">
 
                 {% if post.poster.profile_pic %}
-                    <a class="theme_text pfp" href="{{ url_for ('user', id=post.poster.id) }}">
-                        <div>
-                            <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small">
-                        </div>
-                    </a>
+                    <img usemap="#workmap" src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle small">
+                    <map name="workmap">
+                        <area shape="circle" coords="30,30,30" alt="Circle Area" class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"></a>
+                    </map>
                 {% else%}
-                    <a class="theme_text pfp" href="{{ url_for ('user', id=post.poster.id) }}">
-                        <div>
-                            <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small">
-                        </div>
-                    </a>                
+                    <img usemap="#workmap" src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle small">
+                    <map name="workmap">
+                        <area shape="circle" coords="30,30,30" alt="Circle Area" class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"></a>
+                    </map>              
                 {% endif %}
                 </div>
                 
