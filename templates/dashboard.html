@@ -35,7 +35,9 @@
                         <div class="col-6">
                             {% if current_user.id == 2 %}
                                 <img src="{{ url_for ('static', filename='Bennett.jpg')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
-                            {% else%}
+                            {% elif current_user.id == 10 %}
+                                    <img src="{{ url_for ('static', filename='lighthouse.jpg')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
+                            {% else %}
                                 <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
                             {% endif %}
                         </div>

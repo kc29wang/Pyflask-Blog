@@ -32,6 +32,8 @@
                         <div class="col-6">
                             {% if user.id == 2 %}
                                 <img src="{{ url_for ('static', filename='Bennett.jpg')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
+                            {% elif user.id == 10 %}
+                                <img src="{{ url_for ('static', filename='lighthouse.jpg')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
                             {% else%}
                                 <img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="160" height="160" class="squared float-end">
                             {% endif %}
@@ -49,8 +51,11 @@
             <table class="table table-index table-borderless">
                 <tbody>
                     <tr>
-                        <td class="leftData">{% if post.poster.id == 2 %}
-                            <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='Bennett.jpg')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                        <td class="leftData">
+                        {% if post.poster.id == 2 %}
+                            <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='Bennett.jpg')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>    
+                        {% elif post.poster.id == 10 %}
+                            <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='lighthouse.jpg')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                         {% else%}
                             <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
                         {% endif %}
