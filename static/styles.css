@@ -64,7 +64,7 @@ a.search_result
     vertical-align: middle;
  }
 
- .circle
+.circle
  {
     border-radius: 50%;
     border: 2px solid #22354f;
@@ -73,7 +73,7 @@ a.search_result
 
  }
 
- .squared
+.squared
  {
     border-radius: 5%;
     border: 2px solid #22354f;
@@ -82,14 +82,12 @@ a.search_result
 
  }
 
- .adminTable{
+.adminTable{
     text-align: center;
  }
 
- .col-1 {
-    width: 0%;
-}
+.leftData {
+    vertical-align:top;
+    padding-right: 15px;
+ }
  
- .col-11 {
-    padding-left: 65px;
-}

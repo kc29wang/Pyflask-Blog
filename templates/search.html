@@ -8,29 +8,28 @@
             {% if not results.all()|length == 0 %}
                 <h5>Search Results</h5><br>
                 {% for result in results|reverse  %}
-                <div class="shadow p-3 mb-5 bg-body rounded">       
-                    <div class="row">
-                        <div class="col-1">
-        
-                        {% if result.Posts.poster.profile_pic %}
-                            <a class="theme_text" href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
-                        {% else%}
-                            <a class="theme_text" href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
-                        {% endif %}
-                        </div>
-                        
-                        <div class="col-11">
-                            <h4 class="theme_text">{{ result.Posts.title }}</h4>
-                            <small>By: <a class="theme_text" href="{{ url_for ('user', id=result.Posts.poster.id) }}"><span class="theme_text">{{ result.Users.name }}</span></a><br>
-                            Date: {{ result.Posts.date_posted }}</small><br>
-                            <div class="preview">{{ result.Posts.content|safe }}</div>
-                            <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=result.Posts.id) }}">View Post</a>        
-                            {% if current_user.id == result.Posts.poster.id or current_user.username == "admin"  %}
-                            <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=result.Posts.id) }}">Edit Post</a>  
-                            <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=result.Posts.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
-                            {% endif %}
-                        </div>
-                    </div>
+                <div class="shadow p-3 mb-5 bg-body rounded">    
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="leftData">{% if result.Posts.poster.profile_pic %}
+                                    <a href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                                {% else%}
+                                    <a href="{{ url_for ('user', id=result.Posts.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                                {% endif %}
+                                </td>
+                                <td><h4 class="theme_text">{{ result.Posts.title }}</h4>
+                                    <small>By: <a class="theme_text" href="{{ url_for ('user', id=result.Posts.poster.id) }}"><span class="theme_text">{{ result.Users.name }}</span></a><br>
+                                    Date: {{ result.Posts.date_posted }}</small><br>
+                                    <div class="preview">{{ result.Posts.content|safe }}</div>
+                                    <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=result.Posts.id) }}">View Post</a>        
+                                    {% if current_user.id == result.Posts.poster.id or current_user.username == "admin"  %}
+                                    <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=result.Posts.id) }}">Edit Post</a>  
+                                    <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=result.Posts.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                    </table>   
                 </div> 
                 {% endfor %}
             {% else %}
