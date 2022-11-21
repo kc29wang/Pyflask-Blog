@@ -54,14 +54,14 @@ a.search_result
   }
 
 .preview{
-    overflow: hidden;
+    overflow: hidden !important;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
     margin-bottom: 5px;    
-    white-space: nowrap;
     vertical-align: middle;
+    
  }
 
 .circle
@@ -86,8 +86,13 @@ a.search_result
     text-align: center;
  }
 
+
 .leftData {
+    width:6.5%;
     vertical-align:top;
     padding-right: 15px;
  }
  
+.rightData{  
+    overflow: hidden;    
+}

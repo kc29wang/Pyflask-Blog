@@ -41,28 +41,27 @@
         {% else %}
         {% for post in posts|reverse %}
         <div class="shadow p-3 mb-5 bg-body rounded">       
-            <div class="row">
-                <div class="col-1">
-                {% if post.poster.profile_pic %}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
-                {% else%}
-                    <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" class="float-start circle small"></a>
-                {% endif %}
-                </div>
-                
-                <div class="col-11">
-                    <h4 class="theme_text">{{ post.title }}</h4>
-                    
-                    <small>By: <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><span class="theme_text">{{ post.poster.name }}</span></a><br>
-                    Date: {{ post.date_posted }}</small><br>
-                    <div class="preview">{{ post.content|safe }}</div>
-                    <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=post.id) }}">View Post</a>        
-                    {% if current_user.id == post.poster.id or current_user.username == "admin"  %}
-                    <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=post.id) }}">Edit Post</a>  
-                    <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=post.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
-                    {% endif %}
-                </div>
-            </div>
+            <table class="table table-index table-borderless">
+                <tbody>
+                    <tr>
+                        <td class="leftData">{% if post.poster.profile_pic %}
+                            <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                        {% else%}
+                            <a href="{{ url_for ('user', id=post.poster.id) }}"><img src="{{ url_for ('static', filename='default_profile_picture.png')}}" alt="Profile Picture" width="60" height="60" class="float-start circle"></a>
+                        {% endif %}
+                        </td>
+                        <td class="rightData"><h4 class="theme_text">{{ post.title }}</h4>
+                            <small>By: <a class="theme_text" href="{{ url_for ('user', id=post.poster.id) }}"><span class="theme_text">{{ post.poster.name }}</span></a><br>
+                            Date: {{ post.date_posted }}</small><br>
+                            <div class="preview">{{ post.content|safe }}</div>
+                            <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=post.id) }}">View Post</a>        
+                            {% if current_user.id == post.poster.id or current_user.username == "admin"  %}
+                            <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('edit_post', id=post.id) }}">Edit Post</a>  
+                            <a class="btn btn-outline-danger btn-sm" href="{{ url_for ('delete_post', id=post.id) }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+            </table>
         </div>  
         {% endfor %}
     {% endif %}
