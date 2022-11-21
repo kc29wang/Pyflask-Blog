@@ -93,8 +93,11 @@ a.search_result
 
 
 .leftData {
-    width:6.5%;
-    vertical-align:top;
-    padding-right: 15px;
+    vertical-align: top;
+    width:85px;
+ }
+
+ .rightData {
+    width:80%;
  }
  
