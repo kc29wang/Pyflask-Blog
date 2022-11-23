@@ -21,7 +21,7 @@
                         <div class="rightData">
                             <h4 class="theme_text">{{ result.Posts.title }}</h4>
                             <small>By: <a class="theme_text" href="{{ url_for ('user', id=result.Posts.poster.id) }}"><span class="theme_text">{{ result.Users.name }}</span></a><br>
-                            Date: {{ result.Posts.date_posted }}</small><br>
+                            Date: {{ result.Posts.date_posted }} UTC</small><br>
                             <div class="preview">{{ result.Posts.content|safe }}</div>
                             <a class="btn btn-dark theme btn-sm button" href="{{ url_for ('post', id=result.Posts.id) }}">View Post</a>        
                             {% if current_user.id == result.Posts.poster.id or current_user.username == "admin"  %}
