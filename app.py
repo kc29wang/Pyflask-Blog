@@ -54,7 +54,7 @@ class Posts(db.Model):
     title = db.Column(db.String(255))
     content = db.Column(db.Text)
     #author = db.Column(db.String(255))
-    date_posted = db.Column(db.DateTime, default=datetime.utcnow.replace(microsecond=0))
+    date_posted = db.Column(db.DateTime, default=datetime.now().replace(microsecond=0).strftime("%Y/%m/%d %H:%M:%S"))
     slug = db.Column(db.String(255))
     # Foreign Key to link users
     poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -67,7 +67,7 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     favorite_color = db.Column(db.String(100), nullable=True)
     about_author = db.Column(db.Text())
-    date_added = db.Column(db.DateTime, default=datetime.utcnow.replace(microsecond=0))
+    date_added = db.Column(db.DateTime, default=datetime.now().replace(microsecond=0).strftime("%Y/%m/%d %H:%M:%S"))
     password_hash = db.Column(db.String(200), nullable=False)
     profile_pic = db.Column(db.String(), nullable=True)
     # A user can have many posts
