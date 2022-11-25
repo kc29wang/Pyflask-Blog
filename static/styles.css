@@ -16,12 +16,6 @@
     color: #22354f;
 }
 
-a.button
-{
-    text-decoration: none;
-    color: white;
-}
-
 .dash
 {
     margin-top: 5px !important;
@@ -101,3 +95,19 @@ a.search_result
     width:73%;
  }
  
+ .button
+ {
+     text-decoration: none;
+     color: white;
+     Transition: 0.3s;
+ }
+ 
+ .button:hover{
+ box-shadow: 0px 0px 0px 1.5px white inset, 0px 0px 0px 2.5px #22354f;
+ background-color: #22354f;
+ }
+ 
+ .btn{
+     margin-right: 5px;
+     margin-top: 10px;
+ }
